@@ -1,0 +1,144 @@
+!DOCTYPE html>
+
+<head>
+
+	<title>Susan Yun</title>
+	<link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+	 <link rel="stylesheet" href="mystyle.css">
+
+</head>
+<header>
+	<div>
+	<img src="https://i.imgur.com/Wm9kpzt.png?2" align = right>
+	</div>
+	<div>
+		<span class="beach">At the Beach</span><br>
+	</div>
+	<h1>Hi, I'm Susan</h1>
+</header>
+
+<body>
+	<img src="http://i.imgur.com/jQdXmaM.jpg?1"><br><br><br><br>
+	<h2>About Me</h2>
+	<p>I am originally from L.A., and moved to the Bay area in 2007. I am currently a marketing project manager at a university in San Francisco. I have many interests: playing tennis, watching independent films on Netflix or at the Clay Theater, surfing (though not very good at it), and most recently, Bhangra dancing.</p>
+	
+	<h2>My Coding Experience</h2>
+	<p>I don't have much coding experience, but I am excited to learn! I did take a Pascal class in high school, but that went over my head! Now, I find it a great skill to have to build cool stuff and be creative--like the image slider below! 
+	</p>
+</body>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="Image-Slider-LnR.js"></script>
+		<link rel="stylesheet" type="text/css" href="Image-Slider-LnR.css">
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="slider_wrapper">
+				<ul id="image_slider">
+					<li><img src="https://i.imgur.com/kIZG8qW.jpg"></li>
+					<li><img src="https://i.imgur.com/RHyI1Gn.jpg"></li>
+					<li><img src="https://i.imgur.com/RFq9ITm.png"></li>
+					<li><img src="https://i.imgur.com/bXWPlJ9.jpg"></li>
+					<li><img src="https://i.imgur.com/kAOa8Ci.jpg"></li>
+					<li><img src="https://i.imgur.com/bXWPlJ9.jpg"></li>
+				</ul>					
+				<span class="nvgt" id="prev"></span>
+				<span class="nvgt" id="next"></span>
+			</div>
+		</div>
+	</body>
+
+<script>
+//1. set ul width 
+//2. image when click prev/next button
+var ul;
+var li_items;
+var imageNumber;
+var imageWidth;
+var prev, next;
+var currentPostion = 0;
+var currentImage = 0;
+
+
+function init(){
+	ul = document.getElementById('image_slider');
+	li_items = ul.children;
+	imageNumber = li_items.length;
+	imageWidth = li_items[0].children[0].clientWidth;
+	ul.style.width = parseInt(imageWidth * imageNumber) + 'px';
+	prev = document.getElementById("prev");
+	next = document.getElementById("next");
+	//.onclike = slide(-1) will be fired when onload;
+	/*
+	prev.onclick = function(){slide(-1);};
+	next.onclick = function(){slide(1);};*/
+	prev.onclick = function(){ onClickPrev();};
+	next.onclick = function(){ onClickNext();};
+}
+
+function animate(opts){
+	var start = new Date;
+	var id = setInterval(function(){
+		var timePassed = new Date - start;
+		var progress = timePassed / opts.duration;
+		if (progress > 1){
+			progress = 1;
+		}
+		var delta = opts.delta(progress);
+		opts.step(delta);
+		if (progress == 1){
+			clearInterval(id);
+			opts.callback();
+		}
+	}, opts.delay || 17);
+	//return id;
+}
+
+function slideTo(imageToGo){
+	var direction;
+	var numOfImageToGo = Math.abs(imageToGo - currentImage);
+	// slide toward left
+
+	direction = currentImage > imageToGo ? 1 : -1;
+	currentPostion = -1 * currentImage * imageWidth;
+	var opts = {
+		duration:1000,
+		delta:function(p){return p;},
+		step:function(delta){
+			ul.style.left = parseInt(currentPostion + direction * delta * imageWidth * numOfImageToGo) + 'px';
+		},
+		callback:function(){currentImage = imageToGo;}	
+	};
+	animate(opts);
+}
+
+function onClickPrev(){
+	if (currentImage == 0){
+		slideTo(imageNumber - 1);
+	} 		
+	else{
+		slideTo(currentImage - 1);
+	}		
+}
+
+function onClickNext(){
+	if (currentImage == imageNumber - 1){
+		slideTo(0);
+	}		
+	else{
+		slideTo(currentImage + 1);
+	}		
+}
+
+window.onload = init;
+
+</script>
+<body>
+<h2>Contact Me!</h2>
+	<p2>You can reach me at susan820@gmail.com.</p2><br><br><br><br>
+<img src="http://i.imgur.com/v1RCK2U.jpg?1" align = left><br><br><br><br><br><br><br><br><br><br><br>
+<p>With my nephew!</p>
+</body>
