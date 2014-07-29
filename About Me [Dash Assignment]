@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+	<title>Susan Yun</title>
+	<style>
+	body {
+		text-align: center;
+		background: url("http://i.imgur.com/L47nn1Q.png");
+		background-size: cover;
+		background-position: center;
+		color: black;
+		font-family: fantasy;
+		font-size: 20px;
+		font-weight: bold;
+	 	}
+	 p {
+	 	font-size: 30px;
+	 }
+	img {
+		margin: 50px 0px 0px 0px;
+		border: 7px solid black;
+		border-radius: 30px;
+		}
+	input {
+		border: 2px solid black;
+		padding: 10px;
+		font-size: 18;
+		font-family: fantasy;
+		background: gray;
+		margin-top: 20px;
+		text-align: center;
+	}
+	input[type="submit"] {
+		border: 2px solid black;
+		padding: 10px;
+		background: black;
+		color: white;
+		text-align: center;
+		margin: 20px 0px 0px 0px;
+
+	}
+	</style>
+</head>
+<body>
+	<img src="http://i.imgur.com/Vt7npHz.jpg?1">
+	<p>Hi, I'm Susan, an SF-based abstract artist</p>
+	<p>Say hi!</p>
+	<input type="name"placeholder="Your name"><br>
+	<input type="email"placeholder="Your email"><br>
+	<input type="submit">
+</body>
